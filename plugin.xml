@@ -4,26 +4,26 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-appavailability"
         version="0.4.2">
-    
+
     <name>AppAvailability</name>
-    
+
     <description>This plugin for Cordova and PhoneGap allows you to check if an app is installed. It requires an URI Scheme (iOS) or a Package Name (Android).</description>
-    
+
     <keywords>Cordova,PhoneGap,plugin,app,availability,installed, URIScheme,URI,Scheme,PackageName,Package,Name,iOS,Android</keywords>
-    
+
     <repo>https://github.com/ohh2ahh/AppAvailability.git</repo>
     <issue>https://github.com/ohh2ahh/AppAvailability/issues</issue>
-    
+
     <license>MIT</license>
-    
+
     <engines>
         <engine name="cordova" version=">=3.0.0" />
     </engines>
-    
+
     <js-module src="www/AppAvailability.js" name="AppAvailability">
         <clobbers target="appAvailability" />
     </js-module>
-    
+
     <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -31,11 +31,18 @@
                 <param name="ios-package" value="AppAvailability" />
             </feature>
         </config-file>
-        
+
         <header-file src="src/ios/AppAvailability.h" />
         <source-file src="src/ios/AppAvailability.m" />
+
+        <config-file target="*-Info.plist">
+            <key>LSApplicationQueriesSchemes</key>
+            <array>
+                <string>kik</string>
+            </array>
+        </config-file>
     </platform>
-    
+
     <!-- Android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -43,8 +50,8 @@
                 <param name="android-package" value="com.ohh2ahh.appavailability.AppAvailability" />
             </feature>
         </config-file>
-        
+
         <source-file src="src/android/AppAvailability.java" target-dir="src/com/ohh2ahh/appavailability/" />
     </platform>
-    
+
 </plugin>
